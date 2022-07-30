@@ -1,0 +1,31 @@
+{%extends 'base.htm'%} {%block content%}
+
+
+<div class="sign-up">
+  <div class="row justify-content-center ">
+    <br>
+
+    <form method="POST" enctype="multipart/form-data" class="form">
+      <h1 class="text-5xl font-extrabold text-medium py-2 text-gray-500">Register</h1>
+      <br>
+      {{form.hidden_tag()}}
+      <div class = "input-wrapper">
+        <label class="form_label" for="inline-full-name">
+          Search
+        </label>
+        {{form.adjectives(class="bg-purple-900 appearance-none font-medium  rounded w-full py-2 px-4 text-gray-100
+        leading-tight focus:outline-none focus:bg-purple-700 transition ease-in-out duration-500")}}
+      </div>
+      <div>
+        {{form.submit(class =" bg-purple-900 py-3 appearance-none outline-none hover:bg-purple-800 transition ease-in-out duration-500 my-2 focus:shadow-outline focus:outline-none text-white  py-2 px-4 rounded")}}
+      </div>
+
+
+    </form>
+  </div>
+  {%for i in da_list%}
+      <img src="{{i}}" alt="">
+      {{i}}
+  {%endfor%}
+</div>
+{%endblock%}

@@ -11,6 +11,17 @@ from werkzeug.utils import secure_filename
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    # design=Design(location="fast_food.png")
+    # db.session.add(design)
+    # db.session.commit()
+    # adjective=Adjective(name='cool')
+    # db.session.add(adjective)
+    # db.session.commit()
+    # adjective=Adjective.query.filter_by(id=1).first()
+    # design=Design.query.filter_by(id=1).first()
+    # design.designs.append(adjective)
+    # db.session.commit()
+    # print(design.designs)
     return render_template("index.htm")
 
 
@@ -30,7 +41,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
 
         if user is not None and user.check_password(form.password.data):
-
+            print('hi')
             login_user(user)
 
             next = request.args.get('next')
@@ -65,7 +76,7 @@ def register():
 def account():
     return render_template('account.htm')
 
-@app.route('/designfind/<adjecties>', methods=['GET', 'POST'])
+@app.route('/designfind/<adjectives>', methods=['GET', 'POST'])
 @login_required
 def find(adjectives):
     form=SearchForm()
@@ -73,17 +84,18 @@ def find(adjectives):
         adjectives_=form.adjectives.data
         return redirect(url_for('find', adjectives=adjectives_))
     da_list = []
-    if adjectives!=None:
+    if adjectives!='None':
         for i in adjectives.split(','):
-            adjective=Adjective.query.filter_by(name=i)
+            adjective=Adjective.query.filter_by(name=i).first()
+            print(i)
             if adjective:
-                for j in adjective.first().designs:
-                    da_list.append(j)
+                for j in adjective.designs:
+                    da_list.append(url_for('static',filename=j.location))
     else:
         design=Design.query.order_by(Design.id.asc())
         for i in design:
-            da_list.append(i)
-    return render_template('find.htm',da_list=da_list)
+            da_list.append(url_for('static',filename=i.location))
+    return render_template('find.htm',da_list=da_list,form=form)
 
 
 

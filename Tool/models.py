@@ -37,7 +37,7 @@ class User(db.Model,UserMixin):
 class Design(db.Model):
     __tablename__='designs'
     id = db.Column(db.Integer,primary_key = True)
-    locaion = db.Column(db.String(64))
+    location = db.Column(db.String(64))
 
     designs = db.relationship('Adjective' , secondary = adjective , backref = db.backref('designs', lazy = 'dynamic'))
 
@@ -50,4 +50,4 @@ class Adjective(db.Model):
     name = db.Column(db.String(64))
 
     def __init__(self, name):
-        self.location=name
+        self.name=name
