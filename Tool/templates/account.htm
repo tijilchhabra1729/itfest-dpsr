@@ -1,10 +1,20 @@
 {%extends "base.htm"%} {%block content%}
 <br><br><br><br><br>
-  <h1>All your design</h1>
-  {%if current_user.designs%}
+
+<section class="designs">
+  <h1 class="heading-2">All your designs</h1>
+
+  <div class="designs-container">
+
+    {%if current_user.designs%}
     {%for i in current_user.designs%}
-    <img src="{{url_for('static',filename=i.location)}}" alt="">
-      <a href="{{url_for('remove', design_id=i.id,adjectives_='person',where='account')}}">Remove</a>
+    <div class="design">
+      <p class="design__heading">LesLie's Gourmet</p>
+      <img src="{{url_for('static',filename=i.location)}}" alt="" class="design__img">
+      <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nisi repellendus perferendis consectetur minima et, obcaecati similique modi eligendi</p>
+      <a href="" class="btn-primary btn-primary__link">Edit</a>
+      <a href="{{url_for('remove', design_id=i.id,adjectives_='person',where='account')}}" class="btn-primary btn-secondary__link">Delete</a>
+    </div>
     {%endfor%}
   {%else%}
     Find your designs
