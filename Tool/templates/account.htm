@@ -19,52 +19,7 @@
     </div>
     {%endfor%}
   {%else%}
-  {%endif%}
-
-  {%if current_user.designs%}
-  {%for i in current_user.designs%}
-  <div class="design">
-    <p class="design__heading">LesLie's Gourmet</p>
-    <img src="{{url_for('static',filename=i.location)}}" alt="" class="design__img">
-    <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nisi repellendus perferendis consectetur minima et, obcaecati similique modi eligendi</p>
-    <a href="" class="btn-primary btn-primary__link">Edit</a>
-    <a href="{{url_for('remove', design_id=i.id,adjectives_='person',where='account')}}" class="btn-primary btn-secondary__link">Delete</a>
-  </div>
-  {%endfor%}
-{%else%}
-{%endif%}
-
-{%if current_user.designs%}
-{%for i in current_user.designs%}
-<div class="design">
-  <p class="design__heading">LesLie's Gourmet</p>
-  <img src="{{url_for('static',filename=i.location)}}" alt="" class="design__img">
-  <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nisi repellendus perferendis consectetur minima et, obcaecati similique modi eligendi</p>
-  <a href="" class="btn-primary btn-primary__link">Edit</a>
-  <a href="{{url_for('remove', design_id=i.id,adjectives_='person',where='account')}}" class="btn-primary btn-secondary__link">Delete</a>
-</div>
-{%endfor%}
-{%else%}
-{%endif%}
-
-{%if current_user.designs%}
-{%for i in current_user.designs%}
-<div class="design">
-  <p class="design__heading">LesLie's Gourmet</p>
-  <img src="{{url_for('static',filename=i.location)}}" alt="" class="design__img">
-  <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nisi repellendus perferendis consectetur minima et, obcaecati similique modi eligendi</p>
-  <a href="" class="btn-primary btn-primary__link">Edit</a>
-  <a href="{{url_for('remove', design_id=i.id,adjectives_='person',where='account')}}" class="btn-primary btn-secondary__link">Delete</a>
-</div>
-{%endfor%}
-{%else%}
-{%endif%}
-    
-</div>
-
-</section>
-
+    Find your designs
+    <a href="{{url_for('find',adjectives='None')}}">Find</a>4
+  {%endif %}
 {%endblock%}
-
-
-
