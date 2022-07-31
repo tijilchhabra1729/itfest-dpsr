@@ -6,30 +6,39 @@
     <br>
 
     <form method="POST" enctype="multipart/form-data" class="form">
-      <h1 class="text-5xl font-extrabold text-medium py-2 text-gray-500">Register</h1>
+      <h1 class="heading-2">Create Your Block</h1>
       <br>
       {{form.hidden_tag()}}
       <div class = "input-wrapper">
-        <label class="form_label" for="inline-full-name">
-          Search
+        <label class="form__label" for="inline-full-name">
+          Describe your Design
         </label>
-        {{form.adjectives(class="bg-purple-900 appearance-none font-medium  rounded w-full py-2 px-4 text-gray-100
-        leading-tight focus:outline-none focus:bg-purple-700 transition ease-in-out duration-500")}}
+        {{form.adjectives(class="form__search-input", placeholder="eg: modern, trending...")}}
       </div>
+
+      <div class = "input-wrapper">
+        <label class="form__label" for="inline-full-name">
+          Give it a Name
+        </label>
+        {{form.adjectives(class="form__search-input", placeholder="eg: Munchies")}}
+      </div>
+      
       <div>
-        {{form.submit(class =" bg-purple-900 py-3 appearance-none outline-none hover:bg-purple-800 transition ease-in-out duration-500 my-2 focus:shadow-outline focus:outline-none text-white  py-2 px-4 rounded")}}
+        {{form.submit(class ="form__btn", value="Create")}}
       </div>
-
-
     </form>
   </div>
+</div>
+
+<div>
   {%for i in da_list%}
-      <img src="{{url_for('static',filename=i.location)}}" alt="">
-      {%if i in current_user.designs%}
-        <a href="{{url_for('remove', design_id=i.id,adjectives_=adjectives,where='find')}}">Remove</a>
-      {%else%}
-        <a href="{{url_for('add', design_id=i.id,adjectives_=adjectives,where='find')}}">Add</a>
-      {%endif%}
+  <div class="design">
+    <p class="design__heading">LesLie's Gourmet</p>
+    <img src="{{url_for('static',filename=i.location)}}" alt="" class="design__img">
+    <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nisi repellendus perferendis consectetur minima et, obcaecati similique modi eligendi</p>
+    <a href="" class="btn-primary btn-primary__link">Edit</a>
+    <a href="{{url_for('add', design_id=i.id,adjectives_=adjectives,where='find')}}" class="btn-primary btn-secondary__link">Add</a>
+  </div>
   {%endfor%}
 </div>
 {%endblock%}

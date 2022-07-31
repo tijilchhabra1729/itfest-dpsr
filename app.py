@@ -92,9 +92,7 @@ def find(adjectives):
                 for j in adjective.designs:
                     da_list.append(j)
     else:
-        design=Design.query.order_by(Design.id.asc())
-        for i in design:
-            da_list.append(i)
+        pass
     return render_template('find.htm',da_list=da_list,form=form,adjectives=adjectives)
 
 
