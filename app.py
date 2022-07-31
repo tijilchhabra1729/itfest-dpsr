@@ -8,6 +8,9 @@ from flask_login import current_user, login_required, login_user, logout_user
 from sqlalchemy import desc, asc
 from werkzeug.utils import secure_filename
 
+public_key = 'pk_test_6pRNASCoBOKtIshFeQd4XMUh'
+
+stripe.api_key = "sk_test_BQokikJOvBiI2HlWgH4olfQ2"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -133,6 +136,34 @@ def remove(design_id,adjectives_,where,name_):
         return redirect(url_for(where, adjectives=adjectives_))
     else:
         return redirect(url_for(where))
+    
+############# Payments ###############
+@app.route('/payment')
+def payment():
+    return render_template('payment.htm', public_key=public_key)
+
+
+@app.route('/thankyou')
+def thankyou():
+    return render_template("thank_you.htm")
+
+
+@app.route('/payment/hqhfoufhofhqoufhqoufh', methods=['POST'])
+def payment_form():
+
+    # CUSTOMER INFORMATION
+    customer = stripe.Customer.create(email=request.form['stripeEmail'],
+                                      source=request.form['stripeToken'])
+
+    # CHARGE/PAYMENT INFORMATION
+    charge = stripe.Charge.create(
+        amount=499,
+        customer=customer.id,
+        currency='usd',
+        description='Premium'
+    )
+
+    return redirect(url_for('thankyou'))
 
 
 if __name__ == '__main__':
