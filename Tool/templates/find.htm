@@ -1,7 +1,7 @@
 {%extends 'base.htm'%} {%block content%}
 
 
-<div class="sign-up">
+<div class="sign-up mgb-medium">
   <div class="row justify-content-center ">
     <br>
 
@@ -22,7 +22,7 @@
         </label>
         {{form.adjectives(class="form__search-input", placeholder="eg: Munchies")}}
       </div>
-      
+
       <div>
         {{form.submit(class ="form__btn", value="Create")}}
       </div>
@@ -30,12 +30,32 @@
   </div>
 </div>
 
-<div>
+<div class="designs-container mgb-small">
   {%for i in da_list%}
   <div class="design">
     <p class="design__heading">LesLie's Gourmet</p>
     <img src="{{url_for('static',filename=i.location)}}" alt="" class="design__img">
-    <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nisi repellendus perferendis consectetur minima et, obcaecati similique modi eligendi</p>
+    <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <a href="" class="btn-primary btn-primary__link">Edit</a>
+    <a href="{{url_for('add', design_id=i.id,adjectives_=adjectives,where='find')}}" class="btn-primary btn-secondary__link">Add</a>
+  </div>
+  {%endfor%}
+  
+  {%for i in da_list%}
+  <div class="design">
+    <p class="design__heading">LesLie's Gourmet</p>
+    <img src="{{url_for('static',filename=i.location)}}" alt="" class="design__img">
+    <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <a href="" class="btn-primary btn-primary__link">Edit</a>
+    <a href="{{url_for('add', design_id=i.id,adjectives_=adjectives,where='find')}}" class="btn-primary btn-secondary__link">Add</a>
+  </div>
+  {%endfor%}
+
+  {%for i in da_list%}
+  <div class="design">
+    <p class="design__heading">LesLie's Gourmet</p>
+    <img src="{{url_for('static',filename=i.location)}}" alt="" class="design__img">
+    <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     <a href="" class="btn-primary btn-primary__link">Edit</a>
     <a href="{{url_for('add', design_id=i.id,adjectives_=adjectives,where='find')}}" class="btn-primary btn-secondary__link">Add</a>
   </div>
