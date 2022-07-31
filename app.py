@@ -11,19 +11,19 @@ from werkzeug.utils import secure_filename
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    # design=Design(location="savage.png")
+    # design=Design(location="4.png")
     # db.session.add(design)
     # db.session.commit()
-    # adjective=Adjective(name='savage')
-    # db.session.add(adjective)
-    # db.session.commit()
-    # adjective=Adjective.query.filter_by(id=2).first()
-    # design=Design.query.filter_by(id=2).first()
+    # adj = ['bakery','cozy','vintage','gourmet','classy','fashion','casual','funky','fast food','popular']
+    # for i in adj:
+    #     adjective=Adjective(name=i)
+    #     db.session.add(adjective)
+    #     db.session.commit()
+    # adjective=Adjective.query.filter_by(id=5).first()
+    # design=Design.query.filter_by(id=4).first()
     # design.designs.append(adjective)
     # db.session.commit()
-    # print(design.designs)
     return render_template("index.htm")
-
 
 @app.route('/logout')
 @login_required
@@ -91,9 +91,8 @@ def find(adjectives,name_):
         return redirect(url_for('find', adjectives=adjectives_,name_=form.name.data))
     da_list = []
     if adjectives!='None':
-        print(adjectives)
         for i in adjectives.split(','):
-            adjective=Adjective.query.filter_by(name=i).first()
+            adjective=Adjective.query.filter_by(name=i.lower()).first()
             if adjective:
                 for j in adjective.designs:
                     if j not in current_user.designs:
@@ -101,7 +100,8 @@ def find(adjectives,name_):
     else:
         pass
     nums = range(len(da_list))
-    return render_template('find.htm',da_list=da_list,form=form,adjectives=adjectives,name_=name_,nums=nums)
+    print(da_list)
+    return render_template('find.htm',da_list=da_list,form=form,adjectives=adjectives,name_=name_,nums=nums,rame=name_)
 
 
 @app.route('/add/<design_id>/<adjectives_>/<where>/<name_>', methods=['GET', 'POST'])
@@ -126,7 +126,6 @@ def remove(design_id,adjectives_,where,name_):
     current_user.designs.remove(design)
     db.session.commit()
     dn = current_user.design_names.split(',')
-    print(dn)
     dn.remove(name_)
     current_user.design_names = ''.join(dn)
     db.session.commit()
