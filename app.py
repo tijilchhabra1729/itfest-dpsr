@@ -7,6 +7,7 @@ from flask import render_template, request, url_for, redirect, flash, abort
 from flask_login import current_user, login_required, login_user, logout_user
 from sqlalchemy import desc, asc
 from werkzeug.utils import secure_filename
+import stripe
 
 public_key = 'pk_test_6pRNASCoBOKtIshFeQd4XMUh'
 
