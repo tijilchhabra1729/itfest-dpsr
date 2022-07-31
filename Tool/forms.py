@@ -30,4 +30,5 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Log in')
 class SearchForm(FlaskForm):
     adjectives = StringField('Add the adjectives' ,validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
     submit = SubmitField('Submit')

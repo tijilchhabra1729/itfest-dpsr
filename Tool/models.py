@@ -22,6 +22,7 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String , unique = True)
     email = db.Column(db.String(64),unique = True,index = True)
     password_hash = db.Column(db.String(128))
+    design_names = db.Column(db.String, default='')
 
     designs = db.relationship('Design' , secondary = design , backref = db.backref('users', lazy = 'dynamic'))
 
