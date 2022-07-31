@@ -9,9 +9,3 @@ $(".toggleNav").click(() => {
     $(".navbar-responsive").toggleClass("open");
     $(".navbar-responsive__link").toggleClass("open__link");
 })
-
-//make navbar visible
-document.addEventListener("scroll", () => {
-    const $navbar = $(".navbar");
-    $navbar.toggleClass('sticky', $(this).scrollTop() > 250);
-})

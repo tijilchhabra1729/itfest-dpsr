@@ -90,13 +90,35 @@ def find(adjectives):
             print(i)
             if adjective:
                 for j in adjective.designs:
-                    da_list.append(url_for('static',filename=j.location))
+                    da_list.append(j)
     else:
         design=Design.query.order_by(Design.id.asc())
         for i in design:
-            da_list.append(url_for('static',filename=i.location))
-    return render_template('find.htm',da_list=da_list,form=form)
+            da_list.append(i)
+    return render_template('find.htm',da_list=da_list,form=form,adjectives=adjectives)
 
+
+@app.route('/add/<design_id>/<adjectives_>/<where>', methods=['GET', 'POST'])
+@login_required
+def add(design_id,adjectives_,where):
+    design = Design.query.filter_by(id=int(design_id)).first()
+    current_user.designs.append(design)
+    db.session.commit()
+    if where=='find':
+        return redirect(url_for(where, adjectives=adjectives_))
+    else:
+        return redirect(url_for(where))
+
+@app.route('/remove/<design_id>/<adjectives_>/<where>', methods=['GET', 'POST'])
+@login_required
+def remove(design_id,adjectives_,where):
+    design = Design.query.filter_by(id=int(design_id)).first()
+    current_user.designs.remove(design)
+    db.session.commit()
+    if where=='find':
+        return redirect(url_for(where, adjectives=adjectives_))
+    else:
+        return redirect(url_for(where))
 
 
 if __name__ == '__main__':

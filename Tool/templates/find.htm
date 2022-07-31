@@ -24,8 +24,12 @@
     </form>
   </div>
   {%for i in da_list%}
-      <img src="{{i}}" alt="">
-      {{i}}
+      <img src="{{url_for('static',filename=i.location)}}" alt="">
+      {%if i in current_user.designs%}
+        <a href="{{url_for('remove', design_id=i.id,adjectives_=adjectives,where='find')}}">Remove</a>
+      {%else%}
+        <a href="{{url_for('add', design_id=i.id,adjectives_=adjectives,where='find')}}">Add</a>
+      {%endif%}
   {%endfor%}
 </div>
 {%endblock%}
