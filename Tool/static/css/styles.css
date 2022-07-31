@@ -790,6 +790,7 @@ body {
 .design__img {
   height: 50%;
   margin-bottom: 1rem;
+  margin: 0rem auto 1rem auto;
 }
 
 .design__text {

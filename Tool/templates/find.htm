@@ -35,6 +35,7 @@
     <div class="design">
       <p class="design__heading">{{name_.split(',')[i]}}</p>
       <img src="{{url_for('static',filename=da_list[i].location)}}" alt="" class="design__img">
+      <p class="design__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nisi repellendus perferendis consectetur minima et, obcaecati similique modi eligendi</p>
       <a href="" class="btn-primary btn-primary__link">Edit</a>
       <a href="{{url_for('add', design_id=da_list[i].id,adjectives_=adjectives,where='find',name_=name_)}}" class="btn-primary btn-secondary__link">Add</a>
     </div>
