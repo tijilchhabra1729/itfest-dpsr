@@ -27,27 +27,6 @@ body {
   line-height: 1.6;
   overflow-x: hidden; }
 
-.mgb-extra-large {
-  margin-bottom: 10rem; }
-
-.mgb-large {
-  margin-bottom: 8rem; }
-
-.mgb-big {
-  margin-bottom: 6rem; }
-
-.mgb-medium {
-  margin-bottom: 5rem; }
-
-.mgb-small {
-  margin-bottom: 3rem; }
-
-.mgb-e-small {
-  margin-bottom: 1rem; }
-
-  .mgr-small {
-  margin-right: 3rem; }
-
 .hero {
   width: 100vw;
   height: 120vh;
@@ -793,8 +772,8 @@ body {
 }
 
 .design {
-  background-color: #F4F5FC;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, .1);
+  background-color: #ffffff;
+  box-shadow: 11px 14px 30px 5px rgba(0,0,0,0.08);
   padding: 2rem 4rem;
   text-align: center;
   border-radius: 20px;
@@ -810,6 +789,7 @@ body {
 
 .design__img {
   height: 50%;
+  margin-bottom: 1rem;
 }
 
 .design__text {
@@ -821,3 +801,30 @@ body {
   transform: scale(70%);
   font-weight: 400;
 }
+
+.header {
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.mgb-extra-large {
+  margin-bottom: 10rem; }
+
+.mgb-large {
+  margin-bottom: 8rem; }
+
+.mgb-big {
+  margin-bottom: 6rem; }
+
+.mgb-medium {
+  margin-bottom: 5rem; }
+
+.mgb-small {
+  margin-bottom: 3rem; }
+
+.mgb-e-small {
+  margin-bottom: 1rem; }
+
+  .mgr-small {
+  margin-right: 3rem; }
